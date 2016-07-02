@@ -537,7 +537,14 @@ static int SelectGame(void)
 					// FIXME: Print all 64 characters of the game name?
 					// Currently truncated to 50.
 					const gameinfo *cur_gi = &gi[i+ScrollX];
-					if (cur_gi->DiscNumber == 0)
+					if( !IsWiiU() && i==0 ) // Don't display GameID for pseudo-game
+					{
+						PrintFormat(DEFAULT_SIZE, BLACK, MENU_POS_X, gamelist_y,
+									"%59.59s%s",
+									cur_gi->Name,
+									i == PosX ? ARROW_LEFT : " ");
+					}
+					else if (cur_gi->DiscNumber == 0)
 					{
 						// Disc 1.
 						PrintFormat(DEFAULT_SIZE, BLACK, MENU_POS_X, gamelist_y,
