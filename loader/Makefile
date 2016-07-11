@@ -21,7 +21,7 @@ BUILD		:= build
 SOURCES		:= source
 SOURCES		+= source/unzip
 DATA		:= data
-INCLUDES	:= include ../fatfs
+INCLUDES	:= include ../fatfs/src
 
 #---------------------------------------------------------------------------------
 # options for code generation
