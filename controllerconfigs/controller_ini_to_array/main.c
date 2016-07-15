@@ -150,13 +150,12 @@ u32 ConfigGetValue( char *Data, const char *EntryName, u32 Entry )
 	if( Entry == 0 )
 	{
 		return atox(str);
-
 	} else if ( Entry == 1 ) {
 
 		str = strstr( str, "," );
 		if( str == (char*)NULL || str > strEnd )
 		{
-			printf("No \",\" found in entry.\r\n");
+			printf("No \",\" found in entry \"%s\".\r\n",EntryName);
 			return 0;
 		}
 
@@ -168,7 +167,7 @@ u32 ConfigGetValue( char *Data, const char *EntryName, u32 Entry )
 		str = strstr( str, "," );
 		if( str == (char*)NULL || str > strEnd )
 		{
-			printf("No \",\" found in entry.\r\n");
+			printf("No \",\" found in entry \"%s\".\r\n",EntryName);
 			return 0;
 		}
 
@@ -177,7 +176,7 @@ u32 ConfigGetValue( char *Data, const char *EntryName, u32 Entry )
 		str = strstr( str, "," );
 		if( str == (char*)NULL || str > strEnd )
 		{
-			printf("No \",\" found in entry.\r\n");
+			printf("No \",\" found in entry \"%s\".\r\n",EntryName);
 			return 0;
 		}
 
@@ -283,9 +282,12 @@ int main(int argc, char *argv[])
 	{
 		if(strstr(curp->d_name, ".ini") == NULL)
 			continue;
-		FILE *f = fopen(curp->d_name, "r");
+		FILE *f = fopen(curp->d_name, "rb");
 		if(f == NULL)
 			continue;
+		
+		printf("\nReading \"%s\"\n",curp->d_name);
+		
 		fseek(f, 0, SEEK_END);
 		size_t fsize = ftell(f);
 		rewind(f);
