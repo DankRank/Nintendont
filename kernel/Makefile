@@ -6,7 +6,7 @@ AS	:= $(PREFIX)as
 LD	:= $(PREFIX)gcc
 STRIP	:= $(PREFIX)strip
 
-ifeq ($(windows), 1)
+ifeq ($(OS),Windows_NT)
 	ZIP = zip/zip.exe
 else
 	ZIP = zip
