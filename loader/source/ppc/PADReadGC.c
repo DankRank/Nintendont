@@ -484,7 +484,7 @@ u32 _start(u32 calledByGame)
 			tmp_stick = (double)(substickY - HID_CTRL->CStickY.DeadZone) * HID_CTRL->CStickY.Radius / 1000;
 		else if(substickY < -HID_CTRL->CStickY.DeadZone && substickY < 0)
 			tmp_stick = (double)(substickY + HID_CTRL->CStickY.DeadZone) * HID_CTRL->CStickY.Radius / 1000;
-		Pad[chan].substickY = tmp_stick;
+		Pad[chan].substickY = -tmp_stick;
 /*
 		Pad[chan].stickX = stickX;
 		Pad[chan].stickY = stickY;
